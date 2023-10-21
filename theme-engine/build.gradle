@@ -1,22 +1,29 @@
 apply plugin: 'com.android.library'
 
+Properties projectProperties = new Properties()
+projectProperties.load(project.file('../gradle.properties').newDataInputStream())
+
 android {
-    compileSdkVersion 28
+    compileSdk 33
 
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 28
         versionCode 1
-        versionName project.property("bintray.libraryVersion")
+        versionName projectProperties.getProperty("bintray.libraryVersion")
     }
     lintOptions {
         abortOnError false
     }
+
+    namespace "com.xlythe.engine.theme"
 }
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api 'androidx.legacy:legacy-support-v4:+'
+    api 'androidx.legacy:legacy-support-v4:[1.0.0,)'
+    api 'androidx.appcompat:appcompat:1.6.+'
+    api 'androidx.preference:preference:[1.2.0,)'
 }
 
-apply from: 'https://raw.githubusercontent.com/bourdakos1/jCenter-Upload/master/upload.gradle'
+// apply from: 'https://raw.githubusercontent.com/bourdakos1/jCenter-Upload/master/upload.gradle'

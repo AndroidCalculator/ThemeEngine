@@ -2,9 +2,10 @@ package com.xlythe.engine.theme;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.preference.ListPreference;
-import android.preference.PreferenceManager;
 import android.util.AttributeSet;
+
+import androidx.preference.ListPreference;
+import androidx.preference.PreferenceManager;
 
 import java.util.List;
 
